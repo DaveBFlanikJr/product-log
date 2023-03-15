@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 
-app = express(); // creating the API
+const app = express(); // creating the API
 
 app.get("/", (req, res) => {
   console.log("hello from express");
@@ -8,4 +8,4 @@ app.get("/", (req, res) => {
   res.json({ message: "hello" });
 });
 
-module.exports = app; // exporting the app
+export default app; // exporting the app
