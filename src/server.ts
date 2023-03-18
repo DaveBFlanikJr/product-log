@@ -2,6 +2,7 @@ import express from "express";
 import router from "./router";
 import morgan from "morgan";
 import cors from "cors";
+import { protect } from "./modules/auth";
 
 const app = express(); // creating the API
 
@@ -18,6 +19,6 @@ app.get("/", (req, res) => {
   res.json({ message: "hello" });
 });
 
-app.use("/api", router);
+app.use("/api", protect, router);
 
 export default app; // exporting the app
