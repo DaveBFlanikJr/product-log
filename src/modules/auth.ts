@@ -1,4 +1,13 @@
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+
+export const comparePasswords = (password, hash) => {
+  return bcrypt.compare(password, hash); // will return a promise that will return true or false
+};
+
+export const hashPassword = (password) => {
+  return bcrypt.hash(password, 5);
+};
 
 //function for creating a JWT
 export const createJWT = (user) => {
