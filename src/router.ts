@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { body, validationResult } from "express-validator";
 
 const router = Router();
 
@@ -11,13 +12,20 @@ router.get("/product", (req, res) => {
   res.json({ message: "Hello" });
 });
 // get a individual product
-router.get("/product:id", () => {});
+router.get("/product/:id", () => {});
 //update a product
-router.put("/product:id", () => {});
+router.put("/product/:id", body("name").isString(), (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.status(400);
+    res.json({ errors: errors.array() });
+  }
+});
 //create a product
 router.post("/product", () => {});
 //delete a product
-router.delete("/product:id", () => {});
+router.delete("/product/:id", () => {});
 
 /**
   Updates
@@ -25,13 +33,13 @@ router.delete("/product:id", () => {});
 //get all update
 router.get("/update", () => {});
 // get a individual update
-router.get("/update:id", () => {});
+router.get("/update/:id", () => {});
 //update a update
-router.put("/update:id", () => {});
+router.put("/update/:id", () => {});
 //create a update
 router.post("/update", () => {});
 //delete a update
-router.delete("/update:id", () => {});
+router.delete("/update/:id", () => {});
 
 /**
   Update Points
@@ -39,12 +47,12 @@ router.delete("/update:id", () => {});
 //get all updatepoint
 router.get("/updatepoint", () => {});
 // get a individual updatepoint
-router.get("/updatepoint:id", () => {});
+router.get("/updatepoint/:id", () => {});
 //update a updatepoint
-router.put("/updatepoint:id", () => {});
+router.put("/updatepoint/:id", () => {});
 //create a updatepoint
 router.post("/updatepoint", () => {});
 //delete a updatepoint
-router.delete("/updatepoint:id", () => {});
+router.delete("/updatepoint/:id", () => {});
 
 export default router;
