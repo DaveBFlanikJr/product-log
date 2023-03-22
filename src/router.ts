@@ -22,7 +22,12 @@ router.put(
   (req, res) => {}
 );
 //create a product
-router.post("/product", () => {});
+router.post(
+  "/product",
+  body("name").isString(),
+  handleInputErrors,
+  (req, res) => {}
+);
 //delete a product
 router.delete("/product/:id", () => {});
 
