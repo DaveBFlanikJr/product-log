@@ -26,6 +26,7 @@ model Product {
   belongsToID String
   belongsTo   User     @relation(fields: [belongsToID], references: [id])
   update      Update[]
+  // @@index([id, belongsToID])
 }
 
 enum UPDATE_STATUS {
