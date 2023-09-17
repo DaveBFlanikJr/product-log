@@ -3,6 +3,8 @@ dotenv.config();
 
 import app from "./server"; // using the app we creating in server.js
 
-app.listen(3001, () => {
-  console.log("connected to http://localhost:3001");
+const ip = 3001;
+
+app.listen(ip, () => {
+  console.log(`connected to server: ${ip}`);
 });
